@@ -26,7 +26,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/sportsImage"
+            android:id="@+id/sportsImageDetail"
             android:adjustViewBounds="true" />
 
         <TextView
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:padding="8dp"
             android:text="@string/title_placeholder"
-            android:layout_alignBottom="@+id/sportsImage"
+            android:layout_alignBottom="@+id/sportsImageDetail"
             android:theme="@style/ThemeOverlay.AppCompat.Dark" />
 
         <TextView
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:padding="8dp"
             android:text="@string/news_placeholder"
-            android:layout_below="@+id/sportsImage"
+            android:layout_below="@+id/sportsImageDetail"
             android:textColor="?android:textColorSecondary" />
 
         <TextView
