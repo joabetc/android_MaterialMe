@@ -34,6 +34,8 @@ import java.util.Collections;
  */
 public class MainActivity extends AppCompatActivity {
 
+    static final String STATE_SPORTS_DATA = "data";
+
     // Member variables.
     private RecyclerView mRecyclerView;
     private ArrayList<Sport> mSportsData;
@@ -50,15 +52,21 @@ public class MainActivity extends AppCompatActivity {
         // Set the Layout Manager.
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Initialize the ArrayList that will contain the data.
-        mSportsData = new ArrayList<>();
+        if (savedInstanceState != null) {
+            mSportsData = savedInstanceState.getParcelableArrayList(STATE_SPORTS_DATA);
+        } else {
+            // Initialize the ArrayList that will contain the data.
+            mSportsData = new ArrayList<>();
+        }
 
         // Initialize the adapter and set it to the RecyclerView.
         mAdapter = new SportsAdapter(this, mSportsData);
         mRecyclerView.setAdapter(mAdapter);
 
-        // Get the data.
-        initializeData();
+        if (mSportsData.size() == 0) {
+            // Get the data.
+            initializeData();
+        }
 
         ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper
                 .SimpleCallback(
@@ -119,5 +127,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void resetSports(View view) {
         initializeData();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putParcelableArrayList(STATE_SPORTS_DATA, mSportsData);
+        super.onSaveInstanceState(outState);
     }
 }
