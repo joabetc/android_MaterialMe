@@ -23,7 +23,8 @@
             android:padding="16dp"
             android:text="@string/title_placeholder"
             android:layout_alignBottom="@+id/sportsImageDetail"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark" />
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"
+            style="@style/SportsDetailTitle" />
 
         <TextView
             android:id="@+id/newsTitleDetail"
@@ -32,7 +33,8 @@
             android:padding="16dp"
             android:text="@string/news_placeholder"
             android:layout_below="@+id/sportsImageDetail"
-            android:textColor="?android:textColorSecondary" />
+            android:textColor="?android:textColorSecondary"
+            style="@style/SportsDetailText" />
 
         <TextView
             android:id="@+id/subTitleDetail"
@@ -40,6 +42,7 @@
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:text="@string/lorem_ipsum"
-            android:layout_below="@+id/newsTitleDetail" />
+            android:layout_below="@+id/newsTitleDetail"
+            style="@style/SportsDetailText" />
     </RelativeLayout>
 </ScrollView>
