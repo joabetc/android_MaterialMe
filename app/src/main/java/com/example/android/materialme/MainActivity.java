@@ -71,11 +71,18 @@ public class MainActivity extends AppCompatActivity {
             initializeData();
         }
 
+        int swipeDirs;
+        if (gridColumnCount > 1) {
+            swipeDirs = 0;
+        } else {
+            swipeDirs = ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT;
+        }
+
         ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper
                 .SimpleCallback(
                         ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT |
                             ItemTouchHelper.DOWN | ItemTouchHelper.UP,
-                        ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+                        swipeDirs) {
             @Override
             public boolean onMove(RecyclerView recyclerView,
                                   RecyclerView.ViewHolder viewHolder,
