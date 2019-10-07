@@ -2,6 +2,7 @@ package com.example.android.materialme;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.transition.TransitionInflater;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,5 +23,9 @@ public class DetailActivity extends AppCompatActivity {
         sportsContent.setText(getIntent().getStringExtra("content"));
         Glide.with(this).load(getIntent().getIntExtra("image_resource", 0))
                 .into(sportsImage);
+
+        getWindow().setSharedElementEnterTransition(
+                TransitionInflater.from(this)
+                        .inflateTransition(R.transition.change_image_transform));
     }
 }

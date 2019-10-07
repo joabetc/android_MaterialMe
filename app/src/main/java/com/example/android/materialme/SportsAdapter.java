@@ -16,6 +16,8 @@
 
 package com.example.android.materialme;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -131,10 +133,15 @@ class SportsAdapter extends RecyclerView.Adapter<SportsAdapter.ViewHolder>  {
             Sport currentSport = mSportsData.get(getAdapterPosition());
 
             Intent detailIntent = new Intent(mContext, DetailActivity.class);
+
+            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) mContext,
+                    mSportsImage, "sportLogo");
+
             detailIntent.putExtra("title", currentSport.getTitle());
             detailIntent.putExtra("image_resource", currentSport.getImageResource());
             detailIntent.putExtra("content", currentSport.getContent());
-            mContext.startActivity(detailIntent);
+
+            mContext.startActivity(detailIntent, options.toBundle());
         }
     }
 }
